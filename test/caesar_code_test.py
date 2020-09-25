@@ -1,5 +1,5 @@
 import unittest
-import caesar_code
+from scripts import caesar_code
 
 class CaesarCodeTest(unittest.TestCase):
     '''
