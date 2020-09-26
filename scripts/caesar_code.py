@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import argparse
 
 class CaesarCode:
@@ -10,10 +8,10 @@ class CaesarCode:
         self.__code_capital_a = ord('A')
         self.__difference = ord('z') - ord('a') + 1
 
-    def decode(self, text, shift):
-        return self.encode(text, -shift)
+    def decrypt(self, text, shift):
+        return self.encrypt(text, -shift)
 
-    def encode(self, text, shift):
+    def encrypt(self, text, shift):
         result = []
         for letter in text:
             if letter.islower():
@@ -35,7 +33,7 @@ class CaesarCode:
         Possible arguments
         '''
         self.parser.add_argument(
-            'option', choices=['encode', 'decode'],
+            'option', choices=['encrypt', 'decrypt'],
             help='''Possible actions''')
         self.parser.add_argument(
             '--offset', type=int, required=True,
@@ -48,13 +46,9 @@ class CaesarCode:
     def run(self):
         self.cli()
         args = self.parser.parse_args()
-        if args.option == 'encode':
-            print(self.encode(args.text, args.offset))
-        elif args.option == 'decode':
-            print(self.decode(args.text, args.offset))
+        if args.option == 'encrypt':
+            print(self.encrypt(args.text, args.offset))
+        elif args.option == 'decrypt':
+            print(self.decrypt(args.text, args.offset))
         else:
             print(self.parser.print_usage())
-
-if __name__ == '__main__':
-    active_caesar_code = CaesarCode()
-    active_caesar_code.run()
