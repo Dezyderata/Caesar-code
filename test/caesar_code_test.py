@@ -3,7 +3,7 @@
 import unittest
 import sys
 
-sys.path.append('../scripts')
+sys.path.append('../caesar')
 
 import caesar_code
 
