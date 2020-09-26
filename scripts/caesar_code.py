@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
+from flask import Flask
+from markupsafe import escape
 
 class CaesarCode:
 
@@ -55,6 +57,19 @@ class CaesarCode:
         else:
             print(self.parser.print_usage())
 
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello world'
+
+@app.route('/encrypt/<int:offset>/<string:text>')
+def encript(offset, text):
+    return CaesarCode().encode(escape(text), offset)
+
+@app.route('/decrypt/<int:offset>/<string:text>')
+def decript(offset, text):
+    return CaesarCode().decode(escape(text), offset)
+
 if __name__ == '__main__':
-    active_caesar_code = CaesarCode()
-    active_caesar_code.run()
+    app.run()
