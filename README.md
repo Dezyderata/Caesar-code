@@ -1,7 +1,7 @@
 Caesar is a Python module encoding and decoding Caesar code.
 
 Instalation:
-	Download .whl package from .
+	Download .whl package from https://github.com/Dezyderata/Caesar-code/releases/tag/v1.0.
 	Install using pip
 
 Runing:
@@ -21,3 +21,13 @@ CLI application:
 	  --text TEXT        Text to shift. Argument is required.
 
 Web application shows listening port in CLI.
+
+Example runs:
+	
+	caesar_cli encrypt --offset 7 --text 'Ala ma kota'
+	
+	http://127.0.0.1:5000/encrypt/7/Alamakota
+	
+	
+	
+	
