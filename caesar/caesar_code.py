@@ -37,10 +37,10 @@ class CaesarCode:
             help='''Possible actions''')
         self.parser.add_argument(
             '--offset', type=int, required=True,
-            help=''' Shift by number''')
+            help=''' Shift by number. Argument is required.''')
         self.parser.add_argument(
             '--text', type=str, required=True,
-            help='''Text to shift''')
+            help='''Text to shift. Argument is required.''')
         self.parser.usage = self.parser.format_help()
 
     def run(self):

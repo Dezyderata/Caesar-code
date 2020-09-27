@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 from flask import Flask
 from markupsafe import escape
 
-import caesar_code
+from caesar.caesar_code import CaesarCode
 
 app = Flask(__name__)
 
@@ -11,11 +13,11 @@ def hello_world():
 
 @app.route('/encrypt/<int:offset>/<string:text>')
 def encript(offset, text):
-    return caesar_code.CaesarCode().encrypt(escape(text), offset)
+    return CaesarCode().encrypt(escape(text), offset)
 
 @app.route('/decrypt/<int:offset>/<string:text>')
 def decript(offset, text):
-    return caesar_code.CaesarCode().decrypt(escape(text), offset)
+    return CaesarCode().decrypt(escape(text), offset)
 
 if __name__ == '__main__':
     app.run()
